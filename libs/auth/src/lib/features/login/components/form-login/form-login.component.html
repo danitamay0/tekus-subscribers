@@ -1,0 +1,31 @@
+<section class=" h-full  w-full p-20">
+    <form class="h-full" (ngSubmit)="logIng()" [formGroup]="form">
+        <section class="h-full flex flex-col items-center justify-center">
+            <h3 class="text-4xl mb-1  text-orange font-extrabold">Login</h3>
+            <h3 class="text-1xl mb-8">Ingrese su usuario y constraseña</h3>
+            <mat-form-field class="w-full" appearance="fill">
+                <mat-label>Usuario</mat-label>
+                <input formControlName="UserName" matInput placeholder="Ingrese su usuario">
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            </mat-form-field>
+
+            <mat-form-field class="w-full" appearance="fill">
+                <mat-label>Contraseña</mat-label>
+                <input formControlName="Password" type="password" matInput placeholder="Ingrese su constraseña">
+                <mat-icon matSuffix>password</mat-icon>
+            </mat-form-field>
+            <span *ngIf="fetching=='rejected'" class="font-bold text-base text-red">usuario/contraseña incorrectos</span>
+            <button type="submit" *ngIf="fetching!='pending'" [disabled]="form.invalid" class="w-full mt-8"
+                mat-flat-button color="primary">
+                <mat-icon>login</mat-icon>
+                Ingresar
+            </button>
+
+            <button *ngIf="fetching=='pending'" class="w-full mt-8" mat-flat-button color="primary">
+                Ingresando...
+                <mat-icon>autorenew</mat-icon>
+            </button>
+
+        </section>
+    </form>
+</section>

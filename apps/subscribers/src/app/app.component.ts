@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'tekus-subscribers-root',
@@ -7,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'subscribers';
+
+  constructor(public htt: HttpClient) {
+   /*  this.htt.post('/api/account/login', {
+      "UserName": "patatasss",
+      "Password": "MrPotat0"
+    }).subscribe(r => {
+      console.log(r);
+
+    }) */
+  }
 }
