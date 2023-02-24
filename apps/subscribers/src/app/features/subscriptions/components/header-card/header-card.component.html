@@ -20,7 +20,7 @@ name="messageAlert"
 
 <section class="flex flex-wrap justify-between">
     <mat-form-field class="  " [style.fontSize.px]=14>
-        <input autocomplete="off" placeholder="Filtra por una palabra" matInput />
+        <input autocomplete="off" placeholder="Filtra por una palabra" matInput  #filterValue (blur)="filter(filterValue.value)" />
         <mat-icon class="icon-size-5" matPrefix >search</mat-icon>
     </mat-form-field>
 

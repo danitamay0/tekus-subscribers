@@ -3,12 +3,16 @@ import { HttpClient } from '@angular/common/http';
 import { ReqResSubscribers } from '../interfaces/reqResSubscribers';
 
 @Injectable({
-    providedIn: 'root' 
+    providedIn: 'root'
 })
 export class SubscribersApiService {
     constructor(private _http: HttpClient) {
     }
     loadSubscribers(params = {}) {
         return this._http.get<ReqResSubscribers>(`/api/subscribers`, { params });
+    }
+
+    removeSubscribers(id: string) {
+        return this._http.delete<any>(`/api/subscribers/${id}`);
     }
 }

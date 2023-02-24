@@ -2,10 +2,12 @@ import { Component } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 
 import { Store } from '@ngrx/store';
+import { SwalService } from '@tekus-subscribers/shared-components';
 import { Subscription } from 'rxjs';
 import { Subscriber } from '../../models/subscriber';
+import { deleteSubscriber } from '../../store/actions/delete-subscription';
 import { addSubscribers } from '../../store/actions/subscriptions.actions';
-import { fetchingSubscribers, selecFiltersSubscribers, selecSubscribers } from '../../store/selectors/subscribersSelector';
+import { fetchingSubscribers, selecFiltersSubscribers, selecSubscribers } from '../../store/selectors/subscribers.selector';
 import { columnsTableSubscribers } from './data-set';
 
 @Component({
@@ -28,7 +30,8 @@ export class TableSubscribersComponent {
 
 
   constructor(
-    private store: Store
+    private store: Store,
+    private _swal: SwalService
   ) {
 
     this.clientListsSub = this.store
@@ -85,5 +88,22 @@ export class TableSubscribersComponent {
   pageChanged(event: PageEvent) {
     this.currentPage = event.pageIndex;
     this.loadData();
+  }
+
+
+
+  delete(subscriber: Subscriber) {
+    this._swal.show({
+      icon: 'question',
+      title: '¡Antención!',
+      text: `¿Está seguro de eliminar a ${subscriber.name} ?`,
+      showCancel: true
+    }).then(({ isConfirmed }) => {
+
+      if (isConfirmed) {
+        this.store.dispatch(deleteSubscriber({ id: subscriber.id }))
+      }
+    }
+    )
   }
 }

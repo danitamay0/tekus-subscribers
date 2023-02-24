@@ -1,12 +1,10 @@
 <div class="table-responsive">
 
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 w-full">
-        <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
 
         <!-- Name Column -->
         <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef class="font-sans text-xs hover:font-serif">
+            <th mat-header-cell *matHeaderCellDef class="font-bold text-xs ">
                 Nombre
             </th>
             <td mat-cell *matCellDef="let element">
@@ -17,7 +15,7 @@
         </ng-container>
 
         <ng-container matColumnDef="email">
-            <th mat-header-cell *matHeaderCellDef class="font-sans text-xs hover:font-serif">
+            <th mat-header-cell *matHeaderCellDef class="font-bold text-xs ">
                 Email
             </th>
             <td mat-cell *matCellDef="let element">
@@ -29,7 +27,7 @@
         </ng-container>
 
         <ng-container matColumnDef="countryCode">
-            <th mat-header-cell class=" text-xs" *matHeaderCellDef>Código de país</th>
+            <th mat-header-cell class=" text-xs font-bold" *matHeaderCellDef>Código de país</th>
             <td mat-cell *matCellDef="let element">
                 <span class=" text-xs" *ngIf="element.countryCode; else notData">
                     {{ element?.countryCode }}
@@ -37,9 +35,9 @@
             </td>
         </ng-container>
 
-        <!-- product Column -->
+  
         <ng-container matColumnDef="phoneNumber">
-            <th mat-header-cell class=" text-xs" *matHeaderCellDef>Número de celular</th>
+            <th mat-header-cell class=" text-xs font-bold" *matHeaderCellDef>Número de celular</th>
             <td mat-cell *matCellDef="let element">
                 <span class=" text-xs" *ngIf="element.phoneNumber; else notData">
                     {{ element?.phoneNumber }}
@@ -47,9 +45,9 @@
             </td>
         </ng-container>
 
-        <!-- product Column -->
+     
         <ng-container matColumnDef="jobTitle">
-            <th mat-header-cell class=" text-xs" *matHeaderCellDef>Título laboral </th>
+            <th mat-header-cell class=" text-xs font-bold" *matHeaderCellDef>Título laboral </th>
             <td mat-cell *matCellDef="let element">
                 <span class=" text-xs" *ngIf="element.jobTitle; else notData">
                     {{ element?.jobTitle }}
@@ -57,9 +55,9 @@
             </td>
         </ng-container>
 
-        <!-- product Column -->
+  
         <ng-container matColumnDef="area">
-            <th mat-header-cell class=" text-xs" *matHeaderCellDef>Área</th>
+            <th mat-header-cell class=" text-xs font-bold" *matHeaderCellDef>Área</th>
             <td mat-cell *matCellDef="let element">
                 <span class=" text-xs" *ngIf="element.area; else notData">
                     {{ element?.area }}
@@ -67,9 +65,8 @@
             </td>
         </ng-container>
 
-        <!-- product Column -->
         <ng-container matColumnDef="topics">
-            <th mat-header-cell class=" text-xs" *matHeaderCellDef>Topics</th>
+            <th mat-header-cell class=" text-xs font-bold" *matHeaderCellDef>Topics</th>
             <td mat-cell *matCellDef="let element">
                 <span class=" text-xs">
                     {{ element?.topics }}
@@ -77,9 +74,8 @@
             </td>
         </ng-container>
 
-        <!-- product Column -->
         <ng-container matColumnDef="status">
-            <th mat-header-cell class=" text-xs" *matHeaderCellDef>Status</th>
+            <th mat-header-cell class=" text-xs font-bold" *matHeaderCellDef>Status</th>
             <td mat-cell *matCellDef="let element">
                 <span class=" text-xs" *ngIf="element.status; else notData">
                     {{ element?.status }}
@@ -91,10 +87,10 @@
 
         <!-- actions Column -->
         <ng-container matColumnDef="actions">
-            <th mat-header-cell class=" text-xs" *matHeaderCellDef>Acciones</th>
+            <th mat-header-cell class=" text-xs font-bold" *matHeaderCellDef>Acciones</th>
             <td mat-cell *matCellDef="let element" class="text-right">
-                <button class="mr-6" mat-icon-button>
-                    <mat-icon class="w-2.5 h-3.5 text-red">delete</mat-icon>
+                <button class="mr-6" mat-icon-button (click)="delete(element)">
+                    <mat-icon class="w-2.5 h-3.5 text-red" >delete</mat-icon>
                 </button>
             </td>
         </ng-container>

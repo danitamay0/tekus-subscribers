@@ -1,31 +1,7 @@
 <div class="pt-8 px-10 mb-10 w-full h-full">
-
     <mat-card class="px-12 py-8">
+        <mat-progress-bar mode="indeterminate" *ngIf="deletingSubscriber == 'pending'"></mat-progress-bar>
         <tekus-subscribers-header-card></tekus-subscribers-header-card>
         <tekus-subscribers-table-subscribers></tekus-subscribers-table-subscribers>
     </mat-card>
 </div>
-
-
-<!--   
-<div class="pt-11 px-10 w-full h-full">
-    <admin-front-side-drawer-custom (isChanged)="isChanged($event)" #side>
-      <ng-container main>
-        <mat-card class="px-12 py-8">
-          <admin-front-header-card></admin-front-header-card>
-          <admin-front-table-client-list></admin-front-table-client-list>
-        </mat-card>
-      </ng-container>
-      <div side-content>
-        <ng-container *ngIf="isOpen">
-          <admin-front-create-client-list
-            *ngIf="typeFom == 'create'"
-          ></admin-front-create-client-list>
-          <admin-front-filter-client-list
-            *ngIf="typeFom == 'filter'"
-          ></admin-front-filter-client-list>
-        </ng-container>
-      </div>
-    </admin-front-side-drawer-custom>
-  </div>
-   -->

@@ -21,6 +21,13 @@ export class SubscriberService {
       );
   }
 
+  deleteSubscriber(id: string) {
+    return this._subscribers.removeSubscribers(id)
+      .pipe(
+        map(() => ({ removed: true }))
+      );
+  }
+
   private makePaginationCustom(total: number) {
     return {
       length: total

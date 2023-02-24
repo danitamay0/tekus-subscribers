@@ -4,9 +4,9 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, mergeMap, of, switchMap } from 'rxjs';
 import { SubscriberService } from '../../services/subscribers.service';
 import * as subscriberAction from '../actions/subscriptions.actions';
-/* import * as insertsubscriberAction from '../actions/insert-client-list.actions';
-import * as sideFormActions from '../actions/side-form-actions';
- */
+import * as deleteSubscriberAction from '../actions/delete-subscription';
+import { subscribersInitialState } from '../reducers/subscribers.feature';
+
 @Injectable()
 export class SubscribersEfects {
 
@@ -16,14 +16,14 @@ export class SubscribersEfects {
     ) { }
 
     /**
-     * Effect to get clients list
+     * Effect to get subscribers list
      */
     loadSubscribers$ = createEffect(() =>
         this.actions$.pipe(
             ofType(subscriberAction.addSubscribers),
             mergeMap(({ params }) =>
                 /**
-                * service to get clients list and close Modal
+                * service to get subscribers
                 */
                 this._subscriber.loadSubscribers(params).pipe(
                     switchMap((response) => {
@@ -36,10 +36,7 @@ export class SubscribersEfects {
                                 },
                                 filters: params?.filters,
                             }),
-                            /*   sideFormActions.toggleSideForm({
-                                isOpen: false,
-                                typeForm: 'create',
-                              }), */
+
                         ];
                     }),
                     catchError((err) =>
@@ -49,11 +46,51 @@ export class SubscribersEfects {
             )
         )
     );
- /**
-                * service to get clients list, close Modal and insert new client in to reducer
-                */
+
     /**
-     * Effect to create clients list
+     * Effect to remove subscriber
+     */
+    removeSubscribers$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(deleteSubscriberAction.deleteSubscriber),
+            mergeMap(({ id }) =>
+                /**
+                * service to delete subscribers
+                */
+                this._subscriber.deleteSubscriber(id).pipe(
+                    switchMap((response) => {
+                        const params = {
+                            pagination: {
+                                page: 1,
+                                count: subscribersInitialState.pagination.pageSize,
+                                sortOrder: 'PublicId',
+                                sortType: 1
+                            },
+                            filters: { criteria: '' }
+                        }
+                        return [
+                            subscriberAction.unsetPaginationSubscribers(),
+                            subscriberAction.unsetFiltersSubscribers(),
+                            subscriberAction.addSubscribers({
+                                params
+                            }),
+                            deleteSubscriberAction.deleteSubscribersSuccess()
+
+
+                        ];
+                    }),
+                    catchError((err) =>
+                        of(deleteSubscriberAction.deleteSubscribersError({ payload: err }))
+                    )
+                )
+            )
+        )
+    );
+    /**
+                   * service to get subscribers list, close Modal and insert new client in to reducer
+                   */
+    /**
+     * Effect to create subscribers list
      */
     /* insertSubscribers$ = createEffect(() =>
         this.actions$.pipe(
