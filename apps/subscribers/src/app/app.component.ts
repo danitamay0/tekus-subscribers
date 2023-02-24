@@ -10,12 +10,5 @@ export class AppComponent {
   title = 'subscribers';
 
   constructor(public htt: HttpClient) {
-   /*  this.htt.post('/api/account/login', {
-      "UserName": "patatasss",
-      "Password": "MrPotat0"
-    }).subscribe(r => {
-      console.log(r);
-
-    }) */
   }
 }

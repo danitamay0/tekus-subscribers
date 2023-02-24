@@ -13,5 +13,5 @@
     "jest.config.ts",
     "src/**/*.test.ts"
   ],
-  "include": ["src/**/*.ts", "../../apps/subscribers/src/app/core/IFetching.ts"]
+  "include": ["src/**/*.ts", "../../apps/subscribers/src/app/core/interfaces/IFetching.ts"]
 }

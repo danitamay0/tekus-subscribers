@@ -6,6 +6,6 @@ import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   imports: [CommonModule, AuthRoutingModule, FeaturesAuthModule],
-  providers: [CookieService]
+  providers: []
 })
 export class AuthModule { }

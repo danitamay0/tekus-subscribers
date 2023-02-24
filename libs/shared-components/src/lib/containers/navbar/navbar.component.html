@@ -1,0 +1,14 @@
+<mat-toolbar color="primary" >
+    <button mat-icon-button *ngIf="showMenu" (click)="openMenu()">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <div class="flex w-full justify-between px-10">
+        <span>{{title}}</span>
+        <button mat-flat-button color="warn" (click)="logOut()">
+            <mat-icon>logout</mat-icon>
+            LogOut
+        </button>
+    </div>
+
+</mat-toolbar>
+

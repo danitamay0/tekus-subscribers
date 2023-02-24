@@ -1,0 +1,113 @@
+<div class="table-responsive">
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 w-full">
+        <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef class="font-sans text-xs hover:font-serif">
+                Nombre
+            </th>
+            <td mat-cell *matCellDef="let element">
+                <span class=" text-xs" *ngIf="element.email; else notData">
+                    {{ element.name }}
+                </span>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef class="font-sans text-xs hover:font-serif">
+                Email
+            </th>
+            <td mat-cell *matCellDef="let element">
+                <span class=" text-xs" *ngIf="element.email; else notData">
+                    {{ element.email }}
+                </span>
+
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="countryCode">
+            <th mat-header-cell class=" text-xs" *matHeaderCellDef>Código de país</th>
+            <td mat-cell *matCellDef="let element">
+                <span class=" text-xs" *ngIf="element.countryCode; else notData">
+                    {{ element?.countryCode }}
+                </span>
+            </td>
+        </ng-container>
+
+        <!-- product Column -->
+        <ng-container matColumnDef="phoneNumber">
+            <th mat-header-cell class=" text-xs" *matHeaderCellDef>Número de celular</th>
+            <td mat-cell *matCellDef="let element">
+                <span class=" text-xs" *ngIf="element.phoneNumber; else notData">
+                    {{ element?.phoneNumber }}
+                </span>
+            </td>
+        </ng-container>
+
+        <!-- product Column -->
+        <ng-container matColumnDef="jobTitle">
+            <th mat-header-cell class=" text-xs" *matHeaderCellDef>Título laboral </th>
+            <td mat-cell *matCellDef="let element">
+                <span class=" text-xs" *ngIf="element.jobTitle; else notData">
+                    {{ element?.jobTitle }}
+                </span>
+            </td>
+        </ng-container>
+
+        <!-- product Column -->
+        <ng-container matColumnDef="area">
+            <th mat-header-cell class=" text-xs" *matHeaderCellDef>Área</th>
+            <td mat-cell *matCellDef="let element">
+                <span class=" text-xs" *ngIf="element.area; else notData">
+                    {{ element?.area }}
+                </span>
+            </td>
+        </ng-container>
+
+        <!-- product Column -->
+        <ng-container matColumnDef="topics">
+            <th mat-header-cell class=" text-xs" *matHeaderCellDef>Topics</th>
+            <td mat-cell *matCellDef="let element">
+                <span class=" text-xs">
+                    {{ element?.topics }}
+                </span>
+            </td>
+        </ng-container>
+
+        <!-- product Column -->
+        <ng-container matColumnDef="status">
+            <th mat-header-cell class=" text-xs" *matHeaderCellDef>Status</th>
+            <td mat-cell *matCellDef="let element">
+                <span class=" text-xs" *ngIf="element.status; else notData">
+                    {{ element?.status }}
+                </span>
+
+            </td>
+        </ng-container>
+
+
+        <!-- actions Column -->
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell class=" text-xs" *matHeaderCellDef>Acciones</th>
+            <td mat-cell *matCellDef="let element" class="text-right">
+                <button class="mr-6" mat-icon-button>
+                    <mat-icon class="w-2.5 h-3.5 text-red">delete</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns" class="h-14"></tr>
+    </table>
+</div>
+
+<mat-paginator #paginator [length]="totalRows" [pageIndex]="currentPage" [pageSize]="10" (page)="pageChanged($event)"
+    aria-label="Select page">
+</mat-paginator>
+
+<tekus-subscribers-loading-shade [loading]="isLoading"></tekus-subscribers-loading-shade>
+
+<ng-template #notData>...</ng-template>
