@@ -1,7 +1,7 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
 
 import { TypeFetching } from 'libs/auth/src/lib/core/interfaces/IFetching';
-import * as actions from '../actions/delete-subscription';
+import * as actions from '../actions/delete-subscription.action';
 
 
 /**
@@ -56,6 +56,9 @@ export const deleteSubscriberFeature = createFeature({
                 name: payload.name,
                 message: payload.message,
             },
+        })),
+        on(actions.deleteSubscriberUnset, (state,): DeleteSubscribersState => ({
+            ...subscribersInitialState
         }))
     ),
 });

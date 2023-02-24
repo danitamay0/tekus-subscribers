@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
 import { SubscribersApiService } from '../api/subscribers.api';
+import { ICreateSubscriber } from '../interfaces/createSubscriber';
 import { DataReqResSubscribers, ReqResSubscribers } from '../interfaces/reqResSubscribers';
 import { Subscriber } from '../models/subscriber';
 
@@ -23,6 +24,13 @@ export class SubscriberService {
 
   deleteSubscriber(id: string) {
     return this._subscribers.removeSubscribers(id)
+      .pipe(
+        map(() => ({ removed: true }))
+      );
+  }
+
+  createSubscriber(subscriber: ICreateSubscriber) {
+    return this._subscribers.insertSubscribers(subscriber)
       .pipe(
         map(() => ({ removed: true }))
       );

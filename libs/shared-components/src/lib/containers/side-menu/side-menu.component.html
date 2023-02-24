@@ -1,1 +1,10 @@
-<p>side-menu works!</p>
+<ng-content select="[main]"></ng-content>
+<ng-container *ngIf="isOpen">
+    <div @fadeIn @fadeOut class="side-custom  shadow  flex flex-col min-w-0 overflow-y-auto ">
+        <section class="flex justify-end">
+            <mat-icon class="cursor-pointer" (click)="close()">close</mat-icon>
+        </section>
+        <ng-content select="[side-content]"></ng-content>
+    </div>
+    <div class="over-content" (click)="close()"></div>
+</ng-container>

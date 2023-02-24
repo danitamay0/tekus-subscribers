@@ -5,7 +5,6 @@ export const columnsTableSubscribers = [
   'phoneNumber',
   'jobTitle',
   'area',
-  'topics',
   'status',
 
   'actions',

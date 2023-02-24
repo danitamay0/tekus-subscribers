@@ -1,0 +1,23 @@
+.side-custom {
+  background: #ffff;
+  width: 400px;
+  height: 100%;
+  z-index: 3 !important;
+  padding-left: inherit;
+  padding-right: inherit;
+  padding: 20px 40px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.over-content {
+  background: rgba($color: #000000, $alpha: 0.2);
+  border-style:solid;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+}

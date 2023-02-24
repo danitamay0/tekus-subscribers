@@ -1,0 +1,68 @@
+<h3 class="text-xl font-bold mb-4">Crear subscriptor</h3>
+
+<p class="text-sm font-normal mb-8">
+    Llena los campos para crear el subscriptor.
+</p>
+
+<form (ngSubmit)="save()" [formGroup]="form">
+    <p class="text-sm font-bold mb-2">Nombre:</p>
+    <mat-form-field class="w-full mb-2 " [style.fontSize.px]=14>
+        <mat-label>Nombre del subscriptor</mat-label>
+        <input formControlName="Name" maxlength="20" placeholder="Escribe el nombre" matInput />
+        <mat-error>El nombre es obligatorio</mat-error>
+    </mat-form-field>
+
+
+    <p class="text-sm font-bold mb-2">Email:</p>
+    <mat-form-field class="w-full mb-2" [style.fontSize.px]=14>
+        <mat-label>Email del subscriptor</mat-label>
+        <input formControlName="Email" maxlength="20" type="email" placeholder="Escribe el email" matInput />
+        <mat-error>Email inválido</mat-error>
+
+    </mat-form-field>
+
+    <p class="text-sm font-bold mb-2">Código de país:</p>
+
+    <mat-form-field class="w-full " appearance="fill">
+        <mat-label>CountryCode</mat-label>
+
+        <input type="text" placeholder="Pick one" aria-label="Number" matInput formControlName="CountryCode"
+            [matAutocomplete]="auto">
+             
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option [value]="country.Code" *ngFor="let country of filteredOptions">{{country.Code}} -
+                {{country.Name}}</mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+
+    <p class="text-sm font-bold mb-2">Número de teléfono:</p>
+    <mat-form-field class="w-full  " [style.fontSize.px]=14>
+        <mat-label>Teléfono del subscriptor</mat-label>
+        <input formControlName="PhoneNumber" maxlength="20" placeholder="Escribe el teléfono" matInput />
+    </mat-form-field>
+
+
+    <p class="text-sm font-bold mb-2">Título profesional:</p>
+    <mat-form-field class="w-full " [style.fontSize.px]=14>
+        <mat-label>Título profesional del subscriptor
+        </mat-label>
+        <input formControlName="JobTitle" maxlength="20" placeholder="Escribe el título" matInput />
+    </mat-form-field>
+
+
+    <p class="text-sm font-bold ">Área:</p>
+    <mat-form-field class="w-full " [style.fontSize.px]=14>
+        <mat-label>Área subscriptor</mat-label>
+        <input formControlName="Area" maxlength="20" placeholder="Escribe el área" matInput />
+    </mat-form-field>
+
+    <span *ngIf="identityInvalid" class="text-sm text-red">
+        se debe enviar un correo electrónico ó el código del país y el número de teléfono.
+    </span>
+
+    <button class="w-full" [disabled]="form.invalid" mat-flat-button type="submit" color="primary">
+        <mat-icon class="mr-2">add</mat-icon>
+        Guardar Subscriptores
+    </button>
+
+</form>

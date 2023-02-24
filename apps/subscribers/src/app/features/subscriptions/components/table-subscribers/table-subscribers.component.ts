@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { SwalService } from '@tekus-subscribers/shared-components';
 import { Subscription } from 'rxjs';
 import { Subscriber } from '../../models/subscriber';
-import { deleteSubscriber } from '../../store/actions/delete-subscription';
+import { deleteSubscriber } from '../../store/actions/delete-subscription.action';
 import { addSubscribers } from '../../store/actions/subscriptions.actions';
 import { fetchingSubscribers, selecFiltersSubscribers, selecSubscribers } from '../../store/selectors/subscribers.selector';
 import { columnsTableSubscribers } from './data-set';

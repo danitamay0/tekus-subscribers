@@ -25,4 +25,7 @@ export const deleteSubscribersError = createAction(
 );
 
 
+export const deleteSubscriberUnset = createAction(
+    '[Ceate Subscriber] deleteSubscriber Unset'
+);
 

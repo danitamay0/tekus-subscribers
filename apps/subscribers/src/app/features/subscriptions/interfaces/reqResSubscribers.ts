@@ -32,3 +32,16 @@ export interface DataReqResSubscribers {
 }
 
 
+
+
+export interface ReqResCountry {
+    Count: number;
+    Data:  Country[];
+}
+
+export interface Country {
+    Code:      string;
+    Code3:     string;
+    Name:      string;
+    PhoneCode: string;
+}

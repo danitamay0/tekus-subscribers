@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { toggleMenuForm } from '../../store/actions/menu-form-actions';
 import { addSubscribers, unsetFiltersSubscribers, unsetPaginationSubscribers } from '../../store/actions/subscriptions.actions';
 import { subscribersInitialState } from '../../store/reducers/subscribers.feature';
 
@@ -14,9 +15,6 @@ export class HeaderCardComponent {
 
   }
 
-  openMenu(type: string) {
-
-  }
 
   /**
   * Filter to variable and dispatch action to get subscribers
@@ -37,5 +35,9 @@ export class HeaderCardComponent {
       filters: { criteria }
     };
     this.store.dispatch(addSubscribers({ params }));
+  }
+
+  createSubscriber() {
+    this.store.dispatch(toggleMenuForm({ isOpen: true }))
   }
 }

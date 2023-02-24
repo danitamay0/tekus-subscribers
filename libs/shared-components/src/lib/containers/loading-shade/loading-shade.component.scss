@@ -1,16 +1,5 @@
-/* Structure */
-.example-container {
-  position: relative;
-}
 
-.example-table-container {
-  position: relative;
-  min-height: 200px;
-  max-height: 400px;
-  overflow: auto;
-}
-
-.example-loading-shade {
+.custom-loading-shade {
   position: absolute;
   top: 0;
   left: 0;

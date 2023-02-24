@@ -1,16 +1,3 @@
-<!-- <fuse-alert
-class="w-full mb-2"
-[appearance]="'outline'"
-[showIcon]="'true'"
-[type]="alert.type"
-name="messageAlert" 
-[dismissible]="true"
-[dismissed]="true"
-
->
-{{ alert.message }}
-
-</fuse-alert> -->
 <section class="mb-7">
     <h2 class="text-3xl font-bold">Lista de subscripciones</h2>
     <p class="text-sm font-normal tracking-wide ">
@@ -19,12 +6,12 @@ name="messageAlert"
 </section>
 
 <section class="flex flex-wrap justify-between">
-    <mat-form-field class="  " [style.fontSize.px]=14>
+    <mat-form-field  [style.fontSize.px]=14>
         <input autocomplete="off" placeholder="Filtra por una palabra" matInput  #filterValue (blur)="filter(filterValue.value)" />
         <mat-icon class="icon-size-5" matPrefix >search</mat-icon>
     </mat-form-field>
 
-    <button class=" mr-6" mat-stroked-button type="button" color="primary" (click)="openMenu('create')">
+    <button class=" mr-6" mat-stroked-button type="button" color="primary" (click)="createSubscriber()">
         <mat-icon class="mr-2">add</mat-icon>
         Crear Subscriptores
     </button>
